@@ -7,7 +7,7 @@
 <title>Login Page</title>
 </head>
 <body>
-<h1>YOON TESTaaa</h1>
- Welcome to the Login Page!
+<h1>YOON JSP TEST</h1>
+ Welcome to the Login Page ${name}!
 </body>
 </html>
