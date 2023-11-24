@@ -8,6 +8,11 @@
 </head>
 <body>
 <h1>YOON JSP TEST</h1>
- Welcome to the Login Page ${name}!
+ Welcome to the Login Page !
+ <form method="post">
+ 	name: <input type="text" name="name">
+ 	password: <input type="password" name="password">
+ 	<input type="submit">
+ </form>
 </body>
 </html>
