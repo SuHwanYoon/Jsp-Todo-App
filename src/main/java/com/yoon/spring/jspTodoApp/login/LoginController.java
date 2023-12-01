@@ -8,11 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
-
 @Controller
 public class LoginController {
 	
+	private AuthenticationService authenticationService;
+	
+	public LoginController(AuthenticationService authenticationService) {
+		super();
+		this.authenticationService = authenticationService;
+	}
+
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	//login?name=Yoon
@@ -27,8 +32,15 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="login",method = RequestMethod.POST)
-	public String gotoWelcomePage(@RequestParam String name, ModelMap model) {
-		model.put("name", name);
-		return "welcome";
+	public String gotoWelcomePage(@RequestParam String name,@RequestParam String password, ModelMap model) {
+		
+		if (authenticationService.authenticate(name, password)) {
+			model.put("name", name);
+			return "welcome";
+			
+		}
+
+		model.put("errorMassage", "Invalid Credentials! Please try again.");
+		return "login";
 	}
 }

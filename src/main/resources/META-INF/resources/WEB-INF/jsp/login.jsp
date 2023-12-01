@@ -9,6 +9,7 @@
 <body>
 <h1>YOON JSP TEST</h1>
  Welcome to the Login Page !
+ <pre>${errorMassage }</pre>
  <form method="post">
  	name: <input type="text" name="name">
  	password: <input type="password" name="password">

@@ -7,11 +7,7 @@
 <title>Welcome Page</title>
 </head>
 <body>
-<div>
- Welcome to the Redirection Page !
-</div>
-<div>
-Your name: ${name}
-</div>
+	<div>Welcome to the Redirection Page !</div>
+	<div>Your name: ${name}</div>
 </body>
 </html>
