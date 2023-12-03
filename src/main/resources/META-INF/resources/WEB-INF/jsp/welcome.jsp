@@ -7,7 +7,9 @@
 <title>Welcome Page</title>
 </head>
 <body>
-	<div>Welcome to the Redirection Page !</div>
-	<div>Your name: ${name}</div>
+	<div>Welcome ${name} !</div>
+	<hr>
+	<!-- 	href -> RequestMappingPath -->
+	<div><a href="list-todos">Manage</a> your Todos</div>
 </body>
 </html>
