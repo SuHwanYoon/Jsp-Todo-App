@@ -3,6 +3,7 @@ package com.yoon.spring.jspTodoApp.todo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,10 @@ public class TodoService {
 		todos.add(todo);
 	}
 	
+	public void deleteByUserId(int id){
+		Predicate<? super Todo> predicate = todo-> todo.getId()==id;
+		todos.removeIf(predicate );
+		
+	}
 	
 }
