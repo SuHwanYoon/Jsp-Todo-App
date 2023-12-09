@@ -53,7 +53,7 @@ public class TodoController {
 		//use TodoService for addNewTodo
 		//"name"-> Session
 		String username = (String)model.get("name");
-		todoService.addTodo(username, todo.getDescription(), LocalDate.now().plusYears(1), false);
+		todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), false);
 		//return to URL not JSP name and operate listAllTodos Controller Method
 		return "redirect:list-todos";
 	}	
@@ -63,4 +63,30 @@ public class TodoController {
 		todoService.deleteByUserId(id);
 		return "redirect:list-todos";
 	}
+	
+	@RequestMapping(value = "todo-update",method = RequestMethod.GET)
+	public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
+		// i want find specific Todo Object to use todoService and it put new generate Todo Object
+		Todo todo = todoService.findById(id);
+		model.addAttribute("todo", todo);
+		return "todo";
+	}
+
+	@RequestMapping(value = "todo-update", method = RequestMethod.POST)
+	public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
+		if (result.hasErrors()) {
+			return "todo";
+		}
+		//use TodoService for updateTodo
+		//"name"-> Session
+		String username = (String)model.get("name");
+		todo.setUsername(username);
+		todoService.updateTodo(todo);
+		
+		//return to URL not JSP name and operate listAllTodos Controller Method
+		return "redirect:list-todos";
+	}	
+
+	
+	
 }
