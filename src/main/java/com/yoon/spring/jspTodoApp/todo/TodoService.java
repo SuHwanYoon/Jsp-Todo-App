@@ -28,7 +28,7 @@ public class TodoService {
 	}
 	
 	//use return method Because todos is private
-	public List<Todo> findByUserName(String username){
+	public List<Todo> findByUsername(String username){
 		
 		Predicate<? super Todo> predicate = 
 				todo-> todo.getUsername().equalsIgnoreCase(username);
